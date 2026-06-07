@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>IslamicPath</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css'><link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <div class="moon"></div>
+
+<!-- LOGIN SCREEN -->
+<section id="loginScreen" class="screen active">
+
+  <div class="login-card glass">
+
+    <div class="logo">
+      <h1>🕌 IslamicPath</h1>
+      <p>Your Digital Islamic Companion</p>
+    </div>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Username"
+    >
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+    >
+
+    <button id="loginBtn">
+      Login
+    </button>
+
+    <button id="registerBtn">
+      Create Account
+    </button>
+
+    <p class="login-text">
+      Already have an account? Click Login.
+    </p>
+
+    <p class="login-text">
+      New here? Click Create Account.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- MAIN APP -->
+<section id="mainApp" class="screen">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <h2>🕌 IslamicPath</h2>
+    </div>
+
+    <nav>
+
+      <button class="nav-btn active" data-page="dashboard">
+        <i class="bi bi-grid"></i>
+        Dashboard
+      </button>
+
+      <button class="nav-btn" data-page="quran">
+        <i class="bi bi-book"></i>
+        Quran
+      </button>
+
+      <button class="nav-btn" data-page="prayer">
+        <i class="bi bi-clock"></i>
+        Prayer Times
+      </button>
+
+      <button class="nav-btn" data-page="hadith">
+        <i class="bi bi-chat-left-text"></i>
+        Hadith
+      </button>
+
+      <button class="nav-btn" data-page="tasbeeh">
+        <i class="bi bi-plus-circle"></i>
+        Tasbeeh
+      </button>
+
+      <button class="nav-btn" data-page="bookmarks">
+        <i class="bi bi-bookmark-heart"></i>
+        Bookmarks
+      </button>
+
+      <button class="nav-btn" data-page="profile">
+        <i class="bi bi-person"></i>
+        Profile
+      </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <button id="darkModeBtn">
+        🌙 Dark Mode
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- TOPBAR -->
+    <header class="topbar glass">
+
+      <div>
+        <h2 id="welcomeUser">
+          Assalamu Alaikum
+        </h2>
+      </div>
+
+      <div class="topbar-actions">
+        <span id="todayDate"></span>
+      </div>
+
+    </header>
+
+    <!-- DASHBOARD -->
+    <section class="page active" id="dashboard">
+
+      <div class="hero glass">
+
+        <h1>
+          Welcome to IslamicPath
+        </h1>
+
+        <p>
+          Track prayers, read Quran, build habits,
+          and strengthen your connection with Allah.
+        </p>
+
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-grid">
+
+        <div class="stat-card glass">
+          <h3>Prayer Streak</h3>
+          <p id="streakValue">0 Days</p>
+        </div>
+
+        <div class="stat-card glass">
+          <h3>Bookmarks</h3>
+          <p id="bookmarkCount">0</p>
+        </div>
+
+        <div class="stat-card glass">
+          <h3>Tasbeeh Count</h3>
+          <p id="tasbeehTotal">0</p>
+        </div>
+
+        <div class="stat-card glass">
+          <h3>Last Surah</h3>
+          <p id="lastSurahRead">None</p>
+        </div>
+
+      </div>
+
+      <!-- NEXT PRAYER -->
+      <div class="card glass">
+
+        <h2>Next Prayer</h2>
+
+        <div id="nextPrayerName">
+          Loading...
+        </div>
+
+        <div id="countdown">
+          --:--:--
+        </div>
+
+      </div>
+
+      <!-- CHART -->
+      <div class="card glass">
+
+        <h2>Prayer Progress</h2>
+
+        <canvas id="prayerChart"></canvas>
+
+      </div>
+
+    </section>
+
+    <!-- PRAYER PAGE -->
+    <section class="page" id="prayer">
+
+      <h1>Prayer Times</h1>
+
+      <div id="prayerGrid" class="prayer-grid">
+
+        <div class="prayer-card glass">
+          Loading prayer times...
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- QURAN PAGE -->
+    <section class="page" id="quran">
+
+      <div class="page-header">
+
+        <h1>Holy Quran</h1>
+
+        <div class="search-row">
+
+          <input
+            type="text"
+            id="surahSearch"
+            placeholder="Search Surah..."
+          >
+
+          <button id="loadSurahs">
+            Load Quran
+          </button>
+
+        </div>
+
+      </div>
+
+      <div id="surahList" class="surah-list"></div>
+
+      <div id="surahReader" class="surah-reader">
+        <h2>Select a Surah</h2>
+      </div>
+
+    </section>
+
+    <!-- HADITH PAGE -->
+    <section class="page" id="hadith">
+
+      <h1>Daily Hadith</h1>
+
+      <div class="card glass">
+
+        <div id="hadithContent">
+          Click Load Hadith
+        </div>
+
+        <button id="loadHadith">
+          Load Hadith
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- TASBEEH PAGE -->
+    <section class="page" id="tasbeeh">
+
+      <h1>Tasbeeh Counter</h1>
+
+      <div class="tasbeeh-container glass">
+
+        <h2 id="tasbeehCount">
+          0
+        </h2>
+
+        <button id="tasbeehBtn">
+          سبحان الله
+        </button>
+
+        <button id="resetTasbeeh">
+          Reset
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- BOOKMARKS PAGE -->
+    <section class="page" id="bookmarks">
+
+      <h1>Bookmarks</h1>
+
+      <div id="bookmarkContainer">
+
+        <div class="card glass">
+          No bookmarks saved.
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROFILE PAGE -->
+    <section class="page" id="profile">
+
+      <h1>Profile</h1>
+
+      <div class="profile-card glass">
+
+        <h2 id="profileName">
+          User
+        </h2>
+
+        <p>
+          Member of IslamicPath
+        </p>
+
+        <div class="profile-stats">
+
+          <div>
+            <strong>Prayer Streak</strong>
+            <p id="profileStreak">0</p>
+          </div>
+
+          <div>
+            <strong>Bookmarks</strong>
+            <p id="profileBookmarks">0</p>
+          </div>
+
+        </div>
+
+        <button id="logoutBtn">
+          Logout
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</section>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script><script  src="./script.js"></script>
+
+  </body>
+  
+</html>
